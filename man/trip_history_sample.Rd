@@ -20,8 +20,6 @@ A data frame of 1,000 rows representing each sample of trip history
 \item{end station longitude}{The longitude of the start station}
 \item{bikeid}{The identification variable of the bike corresponding to each trip}
 \item{usertype}{Type of user in each trip (Casual = Single Trip or Day Pass user; Member = Annual or Monthly Member)}
-\item{birth year}{The birth year of the user}
-\item{gender}{The self-reported gender of the user}
 \item{postal code}{Postal code of the user}
 }
 }
@@ -32,7 +30,7 @@ The original source of the data are bluebikes system data retrieved from \url{ht
 trip_history_sample
 }
 \description{
-a random sample from all monthly trip history data from 2020 to 2022
+a random sample from February, 2022 trip history data
 retrieved from bluebikes system data
 }
 \keyword{datasets}
