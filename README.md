@@ -40,7 +40,7 @@ stations <- trip_history_sample %>%
   group_by(`start station name`) %>% 
   summarize(trips_from = n())
 head(stations)
-#> # A tibble: 6 × 2
+#> # A tibble: 6 x 2
 #>   `start station name`                      trips_from
 #>   <chr>                                          <int>
 #> 1 1200 Beacon St                                     4
