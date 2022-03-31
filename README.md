@@ -54,7 +54,7 @@ head(stations)
 
 ## Data Visualization via Leaflet
 
-Display the position of the starting stations:
+\<\<\<\<\<\<\< HEAD Display the position of the starting stations:
 
 [a visualization demo](data-raw/Boston_Neighborhoods)
 
