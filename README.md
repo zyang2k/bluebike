@@ -63,6 +63,8 @@ BostonMap <- leaflet(data = trip_history_sample) %>%
 BostonMap
 ```
 
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+
 ## Contributors
 
 -   [Ziyue Yang](https://github.com/zyang2k)

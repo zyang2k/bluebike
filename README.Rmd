@@ -47,7 +47,7 @@ head(stations)
 
 ## Data Visualization via Leaflet
 
-```{r, message=FALSE, warning=FALSE, eval= FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(leaflet)
 
 BostonMap <- leaflet(data = trip_history_sample) %>% 
