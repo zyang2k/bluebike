@@ -51,34 +51,16 @@ head(stations)
 #> 6 699 Mt Auburn St                                   1
 ```
 
-## Data Visualization
+## Data Visualization via Leaflet
 
 ``` r
-library(sf)
-library(ggplot2)
+library(leaflet)
 
-start_station <- st_as_sf(trip_history_sample, coords = c('start station longitude', 'start station latitude'))
+BostonMap <- leaflet(data = trip_history_sample) %>% 
+  addTiles() %>% 
+  addCircleMarkers(lng = trip_history_sample$`start station longitude`, lat = trip_history_sample$`start station latitude`, radius = 0.1, color = "blue")
 
-neighborhoods <- st_read("data-raw/Boston_Neighborhoods/Boston_Neighborhoods.shp")
-neighborhoods_1 <- neighborhoods %>% st_set_crs(st_crs(polygon))
-
-
-my_var <- highways$osm_lines %>% st_set_crs(st_crs(polygon))
-                                            
-ggplot() +
-  geom_sf(data = my_var, aes(color=highway),
-          size = .4,
-          alpha = .65)+
-  theme_void() +
-  geom_sf(data = start_station, 
-          size = .1,
-          alpha = .1)
-
-ggplot() +
-  geom_sf(data = highways$osm_lines) 
-
-ggplot(data = start_station) +
-  geom_sf()
+BostonMap
 ```
 
 ## Contributors
