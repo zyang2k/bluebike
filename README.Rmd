@@ -52,11 +52,36 @@ library(ggplot2)
 
 start_station <- st_as_sf(trip_history_sample, coords = c('start station longitude', 'start station latitude'))
 neighborhoods <- st_read("data-raw/Boston_Neighborhoods/Boston_Neighborhoods.shp")
-district <- st_crs(neighborhoods)
-ggplot(start_station) + 
-  geom_sf()
-ggplot(neighborhoods) +
-  geom_sf()
+neighborhoods <- neighborhoods %>% st_set_crs(st_crs(polygon))
+ggplot() + 
+  geom_sf(data = start_station)
+
+ggplot() + 
+  geom_sf(data = neighborhoods)+
+  geom_sf(data = start_station)+
+  coord_sf()
+
+neighborhoods
+```
+```{r}
+library(osmdata)
+bbx <- getbb("Boston, MA")
+highways <- bbx %>%
+  opq()%>%
+  add_osm_feature(key = "highway", 
+                  value=c("motorway", "trunk",
+                          "primary","secondary", 
+                          "tertiary","motorway_link",
+                          "trunk_link","primary_link",
+                          "secondary_link",
+                          "tertiary_link")) %>%
+  osmdata_sf()
+
+my_var <- highways$osm_lines %>% st_set_crs(st_crs(polygon))
+
+ggplot() +
+  geom_sf(data = my_var) +
+  geom_sf(data = start_station)
 ```
 
 
