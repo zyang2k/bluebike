@@ -16,8 +16,6 @@ knitr::opts_chunk$set(
 # bluebike
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/bluebike)](https://CRAN.R-project.org/package=bluebike)
 <!-- badges: end -->
 
 The goal of bluebike is to ...

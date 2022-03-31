@@ -1,5 +1,26 @@
+
 # bluebike
 
-Bluebike contains data from Blue Bikes System Data website. It contains monthly trip data from 2020 to 2022. The data includes the name and geographic location of the bike stations, start and end time of the trip, trip duration, bike id, user information. Additionally, the data includes a random sample of 1000 trip history entries for sample analysis and functions for importation of the full data set.
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of bluebike is to ...
 
 ## Installation
+
+You can install the development version of bluebike from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("zyang2k/bluebike")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+``` r
+library(bluebike)
+## basic example code
+```
+
