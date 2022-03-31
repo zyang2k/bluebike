@@ -44,18 +44,34 @@ stations <- trip_history_sample %>%
   summarize(trips_from = n())
 head(stations)
 ```
+
 ## Data Visualization
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval= FALSE}
 library(sf)
 library(ggplot2)
 
 start_station <- st_as_sf(trip_history_sample, coords = c('start station longitude', 'start station latitude'))
+
 neighborhoods <- st_read("data-raw/Boston_Neighborhoods/Boston_Neighborhoods.shp")
-district <- st_crs(neighborhoods)
-ggplot(start_station) + 
-  geom_sf()
-ggplot(neighborhoods) +
+neighborhoods_1 <- neighborhoods %>% st_set_crs(st_crs(polygon))
+
+
+my_var <- highways$osm_lines %>% st_set_crs(st_crs(polygon))
+                                            
+ggplot() +
+  geom_sf(data = my_var, aes(color=highway),
+          size = .4,
+          alpha = .65)+
+  theme_void() +
+  geom_sf(data = start_station, 
+          size = .1,
+          alpha = .1)
+
+ggplot() +
+  geom_sf(data = highways$osm_lines) 
+
+ggplot(data = start_station) +
   geom_sf()
 ```
 

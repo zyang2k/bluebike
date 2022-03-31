@@ -40,7 +40,7 @@ stations <- trip_history_sample %>%
   group_by(`start station name`) %>% 
   summarize(trips_from = n())
 head(stations)
-#> # A tibble: 6 x 2
+#> # A tibble: 6 × 2
 #>   `start station name`                      trips_from
 #>   <chr>                                          <int>
 #> 1 1200 Beacon St                                     4
@@ -58,28 +58,28 @@ library(sf)
 library(ggplot2)
 
 start_station <- st_as_sf(trip_history_sample, coords = c('start station longitude', 'start station latitude'))
+
 neighborhoods <- st_read("data-raw/Boston_Neighborhoods/Boston_Neighborhoods.shp")
-#> Reading layer `Boston_Neighborhoods' from data source 
-#>   `C:\Users\Tianshu Zhang\Documents\sds270\bluebike\data-raw\Boston_Neighborhoods\Boston_Neighborhoods.shp' 
-#>   using driver `ESRI Shapefile'
-#> Simple feature collection with 26 features and 7 fields
-#> Geometry type: MULTIPOLYGON
-#> Dimension:     XY
-#> Bounding box:  xmin: -71.19125 ymin: 42.22792 xmax: -70.92278 ymax: 42.39699
-#> Geodetic CRS:  WGS 84
-district <- st_crs(neighborhoods)
-ggplot(start_station) + 
+neighborhoods_1 <- neighborhoods %>% st_set_crs(st_crs(polygon))
+
+
+my_var <- highways$osm_lines %>% st_set_crs(st_crs(polygon))
+                                            
+ggplot() +
+  geom_sf(data = my_var, aes(color=highway),
+          size = .4,
+          alpha = .65)+
+  theme_void() +
+  geom_sf(data = start_station, 
+          size = .1,
+          alpha = .1)
+
+ggplot() +
+  geom_sf(data = highways$osm_lines) 
+
+ggplot(data = start_station) +
   geom_sf()
 ```
-
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
-
-``` r
-ggplot(neighborhoods) +
-  geom_sf()
-```
-
-<img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" />
 
 ## Contributors
 
