@@ -1,9 +1,11 @@
 Package: bluebike
 Title: Blue Bike comprehensive data
 Version: 0.0.0.9001
-Authors@R: 
+Authors@R: c(
     person("Ziyue", "Yang", , "zyang2k@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-9299-8327"))
+           comment = c(ORCID = "0000-0002-9299-8327")),
+    person("Tianshu", "Zhang", "tzhang26@smith.edu", role = "aut",
+           comment = c(ORCID = "0000-0002-3004-4472")))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Suggests: 
