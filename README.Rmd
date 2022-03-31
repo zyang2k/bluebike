@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: yes
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -39,6 +40,7 @@ Count the number of trips from starting stations:
 ```{r example, message=FALSE, warning=FALSE}
 library(bluebike)
 library(dplyr)
+
 stations <- trip_history_sample %>% 
   group_by(`start station name`) %>% 
   summarize(trips_from = n())

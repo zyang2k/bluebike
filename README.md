@@ -36,6 +36,7 @@ Count the number of trips from starting stations:
 ``` r
 library(bluebike)
 library(dplyr)
+
 stations <- trip_history_sample %>% 
   group_by(`start station name`) %>% 
   summarize(trips_from = n())
