@@ -44,44 +44,18 @@ stations <- trip_history_sample %>%
   summarize(trips_from = n())
 head(stations)
 ```
-## Data Visualization
 
-```{r, message=FALSE, warning=FALSE}
-library(sf)
-library(ggplot2)
+## Data Visualization via Leaflet
 
-start_station <- st_as_sf(trip_history_sample, coords = c('start station longitude', 'start station latitude'))
-neighborhoods <- st_read("data-raw/Boston_Neighborhoods/Boston_Neighborhoods.shp")
-neighborhoods <- neighborhoods %>% st_set_crs(st_crs(polygon))
-ggplot() + 
-  geom_sf(data = start_station)
+```{r, message=FALSE, warning=FALSE, eval= FALSE}
+library(leaflet)
 
-ggplot() + 
-  geom_sf(data = neighborhoods)+
-  geom_sf(data = start_station)+
-  coord_sf()
+BostonMap <- leaflet(data = trip_history_sample) %>% 
+  addTiles() %>% 
+  addCircleMarkers(lng = trip_history_sample$`start station longitude`, lat = trip_history_sample$`start station latitude`, radius = 0.1, color = "blue")
 
-neighborhoods
-```
-```{r}
-library(osmdata)
-bbx <- getbb("Boston, MA")
-highways <- bbx %>%
-  opq()%>%
-  add_osm_feature(key = "highway", 
-                  value=c("motorway", "trunk",
-                          "primary","secondary", 
-                          "tertiary","motorway_link",
-                          "trunk_link","primary_link",
-                          "secondary_link",
-                          "tertiary_link")) %>%
-  osmdata_sf()
+BostonMap
 
-my_var <- highways$osm_lines %>% st_set_crs(st_crs(polygon))
-
-ggplot() +
-  geom_sf(data = my_var) +
-  geom_sf(data = start_station)
 ```
 
 
