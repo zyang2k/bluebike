@@ -1,6 +1,5 @@
 ---
 output: github_document
-always_allow_html: yes
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -49,12 +48,19 @@ head(stations)
 
 ## Data Visualization via Leaflet
 
-```{r, message=FALSE, warning=FALSE, eval= TRUE}
+Display the position of the starting stations:
+
+[a visualization demo](data-raw/Boston_Neighborhoods)
+
+```{r, message=FALSE, warning=FALSE, eval= FALSE}
 library(leaflet)
 
 BostonMap <- leaflet(data = trip_history_sample) %>% 
   addTiles() %>% 
-  addCircleMarkers(lng = trip_history_sample$`start station longitude`, lat = trip_history_sample$`start station latitude`, radius = 0.1, color = "blue")
+  addCircleMarkers(lng = trip_history_sample$`start station longitude`, 
+                   lat = trip_history_sample$`start station latitude`, 
+                   radius = 0.1, 
+                   color = "blue")
 
 BostonMap
 
