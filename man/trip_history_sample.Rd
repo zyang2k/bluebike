@@ -32,6 +32,7 @@ The original source of the data are bluebikes system data retrieved from \url{ht
 trip_history_sample
 }
 \description{
-Random 1000 samples from the Blue Bikes System Data website.
+a random sample from all monthly trip history data from 2020 to 2022
+retrieved from bluebikes system data
 }
 \keyword{datasets}
