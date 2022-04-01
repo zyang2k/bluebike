@@ -1,0 +1,17 @@
+#' bluebike - A Data Package for Bluebike users
+#'
+#' The bluebike package provides the sampled dataset from Bluebike System Data
+#'
+#' @docType package
+#' @name bluebike
+#' @examples
+#' library(bluebike)
+#' library(tidyverse)
+#'
+#' # Find most used stations:
+#' stations <- trip_history_sample %>%
+#'     group_by(`start station name`) %>%
+#'     summarize(trips_from = n())
+#' head(stations)
+#'
+NULL
