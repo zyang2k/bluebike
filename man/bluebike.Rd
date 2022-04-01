@@ -13,7 +13,7 @@ library(tidyverse)
 
 # Find most used stations:
 stations <- trip_history_sample \%>\%
-    group_by(`start station name`) \%>\%
+    group_by(`start_station_name`) \%>\%
     summarize(trips_from = n())
 head(stations)
 
