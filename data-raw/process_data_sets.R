@@ -16,6 +16,9 @@ trip_history_202202 <-
 # Run this to retrieve a sample of 1000 rows
 set.seed(2022)
 trip_history_sample <- trip_history_202202 %>%
-  sample_n(1000)
+  sample_n(1000) %>%
+  mutate(
+    usertype = as.factor(usertype)
+  )
 usethis::use_data(trip_history_sample, overwrite = TRUE)
 
