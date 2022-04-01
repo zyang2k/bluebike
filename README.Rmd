@@ -13,12 +13,23 @@ knitr::opts_chunk$set(
 )
 ```
 
-# bluebike
+# bluebike R package
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-Bluebike contains data from [Blue Bikes System Data](https://www.bluebikes.com/system-data) website. It contains monthly trip data from 2020 to 2022. The data includes the name and geographic location of the bike stations, start and end time of the trip, trip duration, bike id, user information. Additionally, the data includes a random sample of 1000 trip history entries for sample analysis and functions for importation of the full data set.
+The `bluebike` R package contains data from [Blue Bikes System Data](https://www.bluebikes.com/system-data) website. It contains monthly trip data from Feb. 2022.
+
+The data includes:
+
+-   The name and geographic location of the bike stations
+-   Start and end time of the trip
+-   Trip duration
+-   Bike id
+-   Basic user information
+
+Additionally, the data includes a random sample of 1000 trip history entries for sample analysis and functions for importation of the full data set.
 
 ## Installation
 
@@ -28,11 +39,14 @@ You can install the development version of bluebike from [GitHub](https://github
 # install.packages("devtools")
 devtools::install_github("zyang2k/bluebike")
 ```
+
 ## Sample Data Set
 
-- `trip_history_sample`: a sample of 1000 trip data entries from February 2022.
+-   `trip_history_sample`: a sample of 1000 trip data entries from February 2022.
 
-## Data Wrangling
+## Basic Usage
+
+### Data Wrangling
 
 Count the number of trips from starting stations:
 
@@ -46,7 +60,7 @@ stations <- trip_history_sample %>%
 head(stations)
 ```
 
-## Data Visualization via Leaflet
+### Data Visualization via Leaflet
 
 Display the position of the starting stations:
 
@@ -63,10 +77,9 @@ BostonMap <- leaflet(data = trip_history_sample) %>%
                    color = "blue")
 
 BostonMap
-
 ```
 
-
 ## Contributors
-- [Ziyue Yang](https://github.com/zyang2k)
-- [Tianshu Zhang](https://github.com/tianshu-zhang)
+
+-   [Ziyue Yang](https://github.com/zyang2k)
+-   [Tianshu Zhang](https://github.com/tianshu-zhang)

@@ -1,18 +1,26 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# bluebike
+# bluebike R package
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-Bluebike contains data from [Blue Bikes System
+The `bluebike` R package contains data from [Blue Bikes System
 Data](https://www.bluebikes.com/system-data) website. It contains
-monthly trip data from 2020 to 2022. The data includes the name and
-geographic location of the bike stations, start and end time of the
-trip, trip duration, bike id, user information. Additionally, the data
-includes a random sample of 1000 trip history entries for sample
-analysis and functions for importation of the full data set.
+monthly trip data from Feb. 2022.
+
+The data includes:
+
+-   The name and geographic location of the bike stations
+-   Start and end time of the trip
+-   Trip duration
+-   Bike id
+-   Basic user information
+
+Additionally, the data includes a random sample of 1000 trip history
+entries for sample analysis and functions for importation of the full
+data set.
 
 ## Installation
 
@@ -29,7 +37,9 @@ devtools::install_github("zyang2k/bluebike")
 -   `trip_history_sample`: a sample of 1000 trip data entries from
     February 2022.
 
-## Data Wrangling
+## Basic Usage
+
+### Data Wrangling
 
 Count the number of trips from starting stations:
 
@@ -52,7 +62,7 @@ head(stations)
 #> 6 699 Mt Auburn St                                   1
 ```
 
-## Data Visualization via Leaflet
+### Data Visualization via Leaflet
 
 Display the position of the starting stations:
 
