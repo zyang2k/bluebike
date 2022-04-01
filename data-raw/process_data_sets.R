@@ -23,7 +23,9 @@ trip_history_sample <- trip_history_202202 %>%
     stop_time = lubridate::ymd_hms(stoptime)
   ) %>%
   select(-c(starttime, stoptime)) %>%
-  rename(trip_duration = tripduration) %>%
+  rename(trip_duration = tripduration,
+         bike_id = bikeid,
+         user_type = usertype) %>%
   janitor::clean_names()
 
 usethis::use_data(trip_history_sample, overwrite = TRUE)
