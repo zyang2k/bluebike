@@ -18,7 +18,13 @@ set.seed(2022)
 trip_history_sample <- trip_history_202202 %>%
   sample_n(1000) %>%
   mutate(
-    usertype = as.factor(usertype)
-  )
+    usertype = as.factor(usertype),
+    start_time = lubridate::ymd_hms(starttime),
+    stop_time = lubridate::ymd_hms(stoptime)
+  ) %>%
+  select(-c(starttime, stoptime)) %>%
+  rename(trip_duration = tripduration) %>%
+  janitor::clean_names()
+
 usethis::use_data(trip_history_sample, overwrite = TRUE)
 
