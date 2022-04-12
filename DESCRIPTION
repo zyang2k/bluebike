@@ -21,7 +21,9 @@ Imports:
     utils,
     magrittr,
     janitor,
-    lubridate
+    lubridate,
+    tidyselect,
+    sf
 RoxygenNote: 7.1.2
 Depends: 
     R (>= 2.10)
