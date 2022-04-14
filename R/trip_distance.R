@@ -1,3 +1,6 @@
+globalVariables(c(
+  "trip_history_sample", "start_station_sf", "end_station_sf", "end_station_sf"
+))
 #' Compute trip distance for a specific dataset
 #'
 #' This function computes the geographical distance between the start and end stations for trips in a given dataset
