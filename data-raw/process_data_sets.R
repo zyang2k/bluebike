@@ -1,7 +1,6 @@
 library(tidyverse)
 library(devtools)
 library(usethis)
-library(readr)
 
 #-------------------------------------------------------------------------------
 # Datasets: Documented in R/datasets.R
@@ -12,7 +11,7 @@ library(readr)
 # 02/2022 data from "https://raw.githubusercontent.com/zyang2k/Blue-Bike-Trip-History-Data/master/202202-bluebikes-tripdata.csv"
 trip_history_202202 <-
   "https://raw.githubusercontent.com/zyang2k/Blue-Bike-Trip-History-Data/master/202202-bluebikes-tripdata.csv" %>%
-  readr::read_csv()
+  read_csv()
 
 # Run this to retrieve a sample of 1000 rows
 set.seed(2022)
@@ -27,13 +26,13 @@ trip_history_sample <- trip_history_202202 %>%
   rename(trip_duration = tripduration,
          bike_id = bikeid,
          user_type = usertype) %>%
-  janitor::clean_names()
+  clean_names()
 
-usethis::use_data(trip_history_sample, overwrite = TRUE)
+use_data(trip_history_sample, overwrite = TRUE)
 
 # Retrieve station data from https://s3.amazonaws.com/hubway-data/current_bluebikes_stations.csv
-station_data <- readr::read_csv("https://s3.amazonaws.com/hubway-data/current_bluebikes_stations.csv") %>%
-  dplyr::rename(number = `Last Updated`,
+station_data <- read_csv("https://s3.amazonaws.com/hubway-data/current_bluebikes_stations.csv") %>%
+  rename(number = `Last Updated`,
          name = `4/6/2022`,
          latitude = `...3`,
          longitude = `...4`,
@@ -42,10 +41,10 @@ station_data <- readr::read_csv("https://s3.amazonaws.com/hubway-data/current_bl
          total_docks = `...7`,
          deployment_year = `...8`
          ) %>%
-  dplyr::filter(number != "Number") %>%
+  filter(number != "Number") %>%
   mutate(latitude = as.numeric(latitude),
          longitude = as.numeric(longitude),
          total_docks = as.numeric(total_docks),
          deployment_year = as.numeric(deployment_year))
 
-usethis::use_data(station_data, overwrite = TRUE)
+use_data(station_data, overwrite = TRUE)
