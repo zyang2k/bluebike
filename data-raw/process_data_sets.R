@@ -1,6 +1,7 @@
 library(tidyverse)
 library(devtools)
 library(usethis)
+library(readr)
 
 #-------------------------------------------------------------------------------
 # Datasets: Documented in R/datasets.R
@@ -30,3 +31,17 @@ trip_history_sample <- trip_history_202202 %>%
 
 usethis::use_data(trip_history_sample, overwrite = TRUE)
 
+# Retrieve station data from https://s3.amazonaws.com/hubway-data/current_bluebikes_stations.csv
+station_data <- readr::read_csv("https://s3.amazonaws.com/hubway-data/current_bluebikes_stations.csv") %>%
+  dplyr::rename(number = `Last Updated`,
+         name = `4/6/2022`,
+         latitude = `...3`,
+         longitude = `...4`,
+         district = `...5`,
+         public = `...6`,
+         total_docks = `...7`,
+         deployment_year = `...8`
+         ) %>%
+  dplyr::filter(number != "Number")
+
+usethis::use_data(station_data, overwrite = TRUE)
