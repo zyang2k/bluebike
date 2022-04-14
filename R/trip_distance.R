@@ -26,5 +26,4 @@ trip_distance <- function(data){
                                      crs = 4326, agr = "constant")) %>%
     mutate(distance = st_distance(start_station_sf, end_station_sf)) %>%
     select(!starts_with("start_station_sf") & !starts_with("end_station_sf"))
-
 }
