@@ -42,6 +42,10 @@ station_data <- readr::read_csv("https://s3.amazonaws.com/hubway-data/current_bl
          total_docks = `...7`,
          deployment_year = `...8`
          ) %>%
-  dplyr::filter(number != "Number")
+  dplyr::filter(number != "Number") %>%
+  mutate(latitude = as.numeric(latitude),
+         longitude = as.numeric(longitude),
+         total_docks = as.numeric(total_docks),
+         deployment_year = as.numeric(deployment_year))
 
 usethis::use_data(station_data, overwrite = TRUE)
