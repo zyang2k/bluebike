@@ -55,7 +55,7 @@ library(bluebike)
 library(dplyr)
 
 stations <- trip_history_sample %>% 
-  group_by(`start station name`) %>% 
+  group_by(start_station_name) %>% 
   summarize(trips_from = n())
 head(stations)
 ```
@@ -71,8 +71,8 @@ library(leaflet)
 
 BostonMap <- leaflet(data = trip_history_sample) %>% 
   addTiles() %>% 
-  addCircleMarkers(lng = trip_history_sample$`start station longitude`, 
-                   lat = trip_history_sample$`start station latitude`, 
+  addCircleMarkers(lng = trip_history_sample$start_station_longitude, 
+                   lat = trip_history_sample$start_station_latitude, 
                    radius = 0.1, 
                    color = "blue")
 

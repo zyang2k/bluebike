@@ -48,18 +48,18 @@ library(bluebike)
 library(dplyr)
 
 stations <- trip_history_sample %>% 
-  group_by(`start station name`) %>% 
+  group_by(start_station_name) %>% 
   summarize(trips_from = n())
 head(stations)
 #> # A tibble: 6 × 2
-#>   `start station name`                      trips_from
+#>   start_station_name                        trips_from
 #>   <chr>                                          <int>
-#> 1 1200 Beacon St                                     4
-#> 2 175 N Harvard St                                   6
-#> 3 191 Beacon St                                      5
-#> 4 30 Dane St                                         8
-#> 5 359 Broadway - Broadway at Fayette Street          6
-#> 6 699 Mt Auburn St                                   1
+#> 1 175 N Harvard St                                   8
+#> 2 191 Beacon St                                      3
+#> 3 30 Dane St                                         7
+#> 4 359 Broadway - Broadway at Fayette Street          4
+#> 5 606 American Legion Hwy at Canterbury St           1
+#> 6 699 Mt Auburn St                                   5
 ```
 
 ### Data Visualization via Leaflet
@@ -73,8 +73,8 @@ library(leaflet)
 
 BostonMap <- leaflet(data = trip_history_sample) %>% 
   addTiles() %>% 
-  addCircleMarkers(lng = trip_history_sample$`start station longitude`, 
-                   lat = trip_history_sample$`start station latitude`, 
+  addCircleMarkers(lng = trip_history_sample$start_station_longitude, 
+                   lat = trip_history_sample$start_station_latitude, 
                    radius = 0.1, 
                    color = "blue")
 
