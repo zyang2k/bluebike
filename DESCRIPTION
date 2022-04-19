@@ -9,6 +9,8 @@ Authors@R: c(
 Description: This package includes data from the Boston Blue Bike trip history data acquired from the Blue Bikes System Data website. The package compiles all monthly trip history data from 2020 to 2022 into a cleaned data set that can easily be used for data analysis. The package also includes summary functions that generate a user history summary for a given user, trip history for a given station, and overall trip history summary statistics like average duration of trips, average mileage, average speed, and top frequency stations for a given month/year. Functions that facilitate the visualization of trip data with maps. 
 License: MIT + file LICENSE
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
@@ -28,3 +30,4 @@ RoxygenNote: 7.1.2
 Depends: 
     R (>= 2.10)
 LazyData: true
+VignetteBuilder: knitr
