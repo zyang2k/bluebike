@@ -18,6 +18,6 @@ a tbl_df object showing the distance between the user and top five closest stati
 This function returns stations with distance in ascending order given the user's current location
 }
 \examples{
-# Calculate distance for user at (-71.11467361, 42.34414899)
-top_5_station <- station_distance(-71.11467361, 42.34414899)
+# Calculate distance for user at (-71.11467361, 42.34414899) and show the closest five stations
+top_5_station <- head(station_distance(-71.11467361, 42.34414899),5)
 }

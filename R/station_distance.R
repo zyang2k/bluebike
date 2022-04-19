@@ -16,7 +16,7 @@ globalVariables(c(
 #' @export station_distance
 #' @examples
 #' # Calculate distance for user at (-71.11467361, 42.34414899) and show the closest five stations
-#' top_5_station <- station_distance(-71.11467361, 42.34414899) %>% head(5)
+#' top_5_station <- head(station_distance(-71.11467361, 42.34414899),5)
 station_distance <- function(long, lat){
   station_sf <- st_as_sf(station_data, coords = c("longitude", "latitude"),
                                        crs = 4326)
