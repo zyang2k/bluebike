@@ -7,9 +7,7 @@ globalVariables(c(
 #'
 #' @importFrom dplyr filter
 #' @importFrom dplyr left_join
-#' @importFrom leaflet addTiles
-#' @importFrom leaflet addPopups
-#' @importFrom leaflet addCircles
+#' @import leaflet
 #' @importFrom magrittr "%>%"
 #' @return A leaflet map
 #' @param long numeric value of longitude
