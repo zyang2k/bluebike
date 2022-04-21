@@ -1,12 +1,27 @@
 ---
-title: "bluebike"
-output: rmarkdown::html_vignette
+title: "`bluebike`: A Data Package for Bluebike users"
+author: "Ziyue Yang and Tianshu Zhang"
+date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{bluebike}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{`bluebike`: A Data Package for Bluebike users}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+tags:
+  - R
+  - Rstats
+  - tidyverse
+  - leaflet
+  - bluebike
+authors:
+  - name: Ziyue Yang
+    orcid: 0000-0002-9299-8327
+  - name: Tianshu Zhang
+    orcid: 0000-0002-3004-4472
+output:
+  rmarkdown::html_vignette:
+    df_print: default
+    number_sections: no
 ---
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -15,5 +30,63 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
+# needed packages in vignette
 library(bluebike)
+library(tidyverse)
+library(leaflet)
 ```
+
+# Summary
+
+Our package includes data from the Boston Blue Bike trip history data acquired from the [Blue Bikes System Data](https://www.bluebikes.com/system-data). The users can import all monthly trip history data from 2020 to 2022 into a cleaned data set that can easily be used for data analysis. \
+  
+The package also includes a sample data set that includes 1000 sampled trip history from Feb. 2022, and a full data set that contains information about all available stations. 
+  Functions inside the package:\
+  
+- `import_month_data`: takes in numeric year/month values and imports data for the specified time\
+
+- `station_distance`: returns stations with distance in ascending order given the user's current location\
+
+- `station_radius`: plots the position of the stations within walking distance (500 m), and present the basic information about the stations via leaflet\
+
+- `trip_distance`: computes the geographical distance between the start and end stations\ 
+
+
+The package would be a useful tool for the Blue Bike operations to analyze the trip data and help improve the shared bike service based on user data. It is also an easy-to-use tool for data analysis and visualization for anyone interested in the Blue Bike trip data.
+
+
+# Introduction
+
+Let's consider sampled data from Feb. 2022 -- which starting station is the most popular one?
+```{r}
+stations <- trip_history_sample %>% 
+  group_by(start_station_name) %>% 
+  summarize(trips_from = n())
+head(stations)
+```
+
+Where are the available positions in Feb. 2022?
+```{r}
+pal <- colorNumeric(
+  palette = "Purples",
+  domain = station_data$total_docks
+)
+
+BostonMap <- leaflet(data = station_data) %>% 
+  addTiles() %>% 
+  addCircleMarkers(lng = station_data$longitude, 
+                   lat = station_data$latitude, 
+                   radius = 1.5, 
+                   color = ~pal(total_docks),
+                   popup = paste0("Station: ", station_data$name, "<br>",
+                             "# docks: ", station_data$total_docks),)
+
+BostonMap
+```
+
+What if I want to see the trip data from the Jan. 2015?
+```{r}
+quarter_1_2021 <- import_month_data(2015, 1)
+```
+
+
