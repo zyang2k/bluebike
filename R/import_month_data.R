@@ -43,20 +43,58 @@ import_month_data <- function(year, month){
 
   ym <- str_c(year, month) # create a 6 digit chr vector for reference
 
-  download.file(
+  if(as.numeric(year) == 2018){
+    if(as.numeric(month) > 4){
+      download.file(
+        url = str_c("https://s3.amazonaws.com/hubway-data/", ym, "-bluebikes-tripdata.zip"),
+        destfile = str_c(tempdir(),"/", ym, "-hubway-tripdata.zip")
+      )
+      unzip(str_c(tempdir(), "/", ym, "-hubway-tripdata.zip"), exdir = tempdir())
+      this_month_bike <- read_csv(str_c(tempdir(),"/", ym, "-bluebikes-tripdata.csv")) %>%
+        mutate(
+          usertype = as.factor(usertype),
+          start_time = lubridate::ymd_hms(starttime),
+          stop_time = lubridate::ymd_hms(stoptime)) %>%
+        select(-c(starttime, stoptime)) %>%
+        rename(trip_duration = tripduration,
+               bike_id = bikeid,
+               user_type = usertype) %>%
+        janitor::clean_names()
+     }
+  }
+  else if(as.numeric(year) > 2018){
+    download.file(
+      url = str_c("https://s3.amazonaws.com/hubway-data/", ym, "-bluebikes-tripdata.zip"),
+      destfile = str_c(tempdir(),"/", ym, "-hubway-tripdata.zip")
+    )
+    unzip(str_c(tempdir(), "/", ym, "-hubway-tripdata.zip"), exdir = tempdir())
+    this_month_bike <- read_csv(str_c(tempdir(),"/", ym, "-bluebikes-tripdata.csv")) %>%
+      mutate(
+        usertype = as.factor(usertype),
+        start_time = lubridate::ymd_hms(starttime),
+        stop_time = lubridate::ymd_hms(stoptime)) %>%
+      select(-c(starttime, stoptime)) %>%
+      rename(trip_duration = tripduration,
+             bike_id = bikeid,
+             user_type = usertype) %>%
+      janitor::clean_names()
+  }
+  else{
+    download.file(
     url = str_c("https://s3.amazonaws.com/hubway-data/", ym, "-hubway-tripdata.zip"),
     destfile = str_c(tempdir(),"/", ym, "-hubway-tripdata.zip")
-  )
+    )
+    unzip(str_c(tempdir(), "/", ym, "-hubway-tripdata.zip"), exdir = tempdir())
+    this_month_bike <- read_csv(str_c(tempdir(),"/", ym, "-hubway-tripdata.csv")) %>%
+      mutate(
+        usertype = as.factor(usertype),
+        start_time = lubridate::ymd_hms(starttime),
+        stop_time = lubridate::ymd_hms(stoptime)) %>%
+      select(-c(starttime, stoptime)) %>%
+      rename(trip_duration = tripduration,
+             bike_id = bikeid,
+             user_type = usertype) %>%
+      janitor::clean_names()
+  }
 
-  unzip(str_c(tempdir(), "/", ym, "-hubway-tripdata.zip"), exdir = tempdir())
-  this_month_bike <- read_csv(str_c(tempdir(),"/", ym, "-hubway-tripdata.csv")) %>%
-    mutate(
-      usertype = as.factor(usertype),
-      start_time = lubridate::ymd_hms(starttime),
-      stop_time = lubridate::ymd_hms(stoptime)) %>%
-    select(-c(starttime, stoptime)) %>%
-    rename(trip_duration = tripduration,
-           bike_id = bikeid,
-           user_type = usertype) %>%
-    janitor::clean_names()
 }
