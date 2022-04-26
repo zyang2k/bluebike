@@ -65,7 +65,7 @@ stations <- trip_history_sample %>%
 head(stations)
 ```
 
-Where are the available positions in Feb. 2022?
+Where are the available stations?
 ```{r}
 pal <- colorNumeric(
   palette = "Purples",
@@ -84,7 +84,7 @@ BostonMap <- leaflet(data = station_data) %>%
 BostonMap
 ```
 
-What if I want to see the trip data from the Jan. 2015?
+What if I want to see the trip data of Jan. 2015?
 ```{r}
 quarter_1_2021 <- import_month_data(2015, 1)
 ```
