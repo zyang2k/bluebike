@@ -25,6 +25,10 @@ station_radius <- function(long, lat, r = 1000){
     filter(as.numeric(distance) < r) %>%
     left_join(station_data, by = c("station_ID" = "number"))
 
+  user_position_icon <- awesomeIcons(
+    icon = "user position",
+    iconColor = "pink"
+  )
   station_map <- leaflet(data = station_distances) %>%
     addTiles() %>%
     addMarkers(station_distances$longitude, station_distances$latitude,
@@ -32,7 +36,8 @@ station_radius <- function(long, lat, r = 1000){
                              "# docks: ", station_distances$total_docks),
               options = popupOptions(closeButton = TRUE)) %>%
     addCircles(long, lat,
-               radius = r)
+               radius = r) %>%
+    addAwesomeMarkers(long, lat, icon = user_position_icon, label = "you are here!")
 
   return(station_map)
 }
