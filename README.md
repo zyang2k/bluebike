@@ -62,14 +62,44 @@ devtools::install_github("zyang2k/bluebike")
 
 ## Basic Usage
 
-### Data Wrangling
-
-Count the number of trips from starting stations:
-
 ``` r
 library(bluebike)
 library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+```
 
+### Retrieve data online
+
+`import_month_data` enables users to retrieve monthly data from Bluebike
+System Data website.
+
+``` r
+jan2015 <- import_month_data(2015, 1)
+#> Rows: 7840 Columns: 15
+#> ── Column specification ────────────────────────────────────────────────────────
+#> Delimiter: ","
+#> chr  (4): start station name, end station name, usertype, birth year
+#> dbl  (9): tripduration, start station id, start station latitude, start stat...
+#> dttm (2): starttime, stoptime
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+### Data Wrangling
+
+-   Using the cleaned dataset `trip_history_sample` included in the
+    package, the user can easily find out the most popular station in
+    Feb. 2022:
+
+``` r
 stations <- trip_history_sample %>% 
   group_by(start_station_name) %>% 
   summarize(trips_from = n())
@@ -85,53 +115,21 @@ head(stations)
 #> 6 699 Mt Auburn St                                   5
 ```
 
-### Data Visualization via Leaflet
-
-Display the position of the starting stations:
-
-![a visualization demo](data-raw/viz_demo.png)
-
-``` r
-library(leaflet)
-
-BostonMap <- leaflet(data = trip_history_sample) %>% 
-  addTiles() %>% 
-  addCircleMarkers(lng = trip_history_sample$start_station_longitude, 
-                   lat = trip_history_sample$start_station_latitude, 
-                   radius = 0.1, 
-                   color = "blue")
-
-BostonMap
-```
-
-What if I want to see the trip data of Jan. 2015?
-
-``` r
-jan2015 <- import_month_data(2015, 1)
-#> Rows: 7840 Columns: 15
-#> ── Column specification ────────────────────────────────────────────────────────
-#> Delimiter: ","
-#> chr  (4): start station name, end station name, usertype, birth year
-#> dbl  (9): tripduration, start station id, start station latitude, start stat...
-#> dttm (2): starttime, stoptime
-#> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-We can then compute the the average distance that user traveled in
-Jan. 2015
+-   Via `trip_distance`, the user can compute the the average distance
+    that user traveled in Jan. 2015
 
 ``` r
 jan_distance <- jan2015 %>% 
   sample_n(1000) %>% 
   trip_distance()
 mean_jan_distance <- mean(jan_distance$distance)
+
 mean_jan_distance
 #> 3215.401 [m]
 ```
 
-Where can I find the closest station?
+-   The function `station_distance()` helps the user to find the closest
+    stations nearby.
 
 ``` r
 top_5_station <- station_distance(-71.13, 42.36) %>%
@@ -152,8 +150,29 @@ top_5_station
 #> 380 POINT (-71.13731 42.35333)    19
 ```
 
-I would like to find all stations around me within 500 m, what should I
-do?
+### Data Visualization via Leaflet
+
+-   Incorporated with the interactive map package `leaflet`, the
+    position of the stations can be displayed:
+
+![a visualization demo](data-raw/viz_demo.png)
+
+``` r
+library(leaflet)
+
+BostonMap <- leaflet(data = station_data) %>% 
+  addTiles() %>% 
+  addCircleMarkers(lng = station_data$longitude, 
+                   lat = station_data$latitude, 
+                   radius = 0.1, 
+                   color = "blue")
+
+BostonMap
+```
+
+-   The function `station_radius()` plots the positions of stations
+    within a certain user defined radius and display basic information
+    about stations available.
 
 ![closest stations demo](data-raw/closest_stations.png)
 
