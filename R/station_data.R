@@ -1,5 +1,6 @@
-#' Blue bike system data
+#' Blue bike station data
 #'
+#' A dataset that includes identification, position, and other basic information about bluebike stations
 #'
 #' @format A data frame of 423 rows and 8 columns
 #' \describe{

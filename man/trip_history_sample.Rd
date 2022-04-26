@@ -3,7 +3,7 @@
 \docType{data}
 \name{trip_history_sample}
 \alias{trip_history_sample}
-\title{Random 1000 samples from the Blue Bikes System Data website.}
+\title{Random 1000 samples from the Blue Bikes System Data website}
 \format{
 A data frame of 1,000 rows representing each sample of trip history
 \describe{
@@ -30,7 +30,6 @@ The original source of the data are bluebikes system data retrieved from \url{ht
 trip_history_sample
 }
 \description{
-a random sample from February, 2022 trip history data
-retrieved from bluebikes system data
+a random sample of bluebike trip history data from February, 2022
 }
 \keyword{datasets}

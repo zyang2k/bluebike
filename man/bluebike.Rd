@@ -5,7 +5,9 @@
 \alias{bluebike}
 \title{bluebike - A Data Package for Bluebike users}
 \description{
-The bluebike package provides the sampled dataset from Bluebike System Data
+This package includes data from the Boston Blue Bike trip history data acquired from the \href{https://www.bluebikes.com/system-data}{Blue Bikes System Data}. The users can import all monthly trip history data from 2020 to 2022 into a cleaned data set that can easily be used for data analysis.
+The package also includes a sample data set that includes 1000 sampled trip history from Feb. 2022, and a full data set that contains information about all available stations.
+The package also serves as a visualization tool for user to browse for closest stations as well as trip-planning via computing trip distances
 }
 \examples{
 \dontrun{

@@ -1,7 +1,6 @@
-#' Random 1000 samples from the Blue Bikes System Data website.
+#' Random 1000 samples from the Blue Bikes System Data website
 #'
-#' a random sample from February, 2022 trip history data
-#' retrieved from bluebikes system data
+#' a random sample of bluebike trip history data from February, 2022
 #'
 #' @format A data frame of 1,000 rows representing each sample of trip history
 #' \describe{

@@ -3,7 +3,7 @@
 \docType{data}
 \name{station_data}
 \alias{station_data}
-\title{Blue bike system data}
+\title{Blue bike station data}
 \format{
 A data frame of 423 rows and 8 columns
 \describe{
@@ -24,6 +24,6 @@ The original source of the data are bluebikes system data retrieved from \url{ht
 station_data
 }
 \description{
-Blue bike system data
+A dataset that includes identification, position, and other basic information about bluebike stations
 }
 \keyword{datasets}

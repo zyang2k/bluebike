@@ -22,17 +22,23 @@ knitr::opts_chunk$set(
 ![version](https://img.shields.io/badge/version-0.0.0.9001-blue)
 <!-- badges: end -->
 
-The `bluebike` R package contains data from [Blue Bikes System Data](https://www.bluebikes.com/system-data) website. It contains monthly trip data from Feb. 2022.
+# Summary
 
-The data includes:
+Our package includes data from the Boston Blue Bike trip history data acquired from the [Blue Bikes System Data](https://www.bluebikes.com/system-data). The users can import all monthly trip history data from 2020 to 2022 into a cleaned data set that can easily be used for data analysis. \
+  
+The package also includes a sample data set that includes 1000 sampled trip history from Feb. 2022, and a full data set that contains information about all available stations. 
+  Functions inside the package:\
+  
+- `import_month_data`: takes in numeric year/month values and imports data for the specified time\
 
--   The name and geographic location of the bike stations
--   Start and end time of the trip
--   Trip duration
--   Bike id
--   Basic user information
+- `station_distance`: returns stations with distance in ascending order given the user's current location\
 
-Additionally, the data includes a random sample of 1000 trip history entries for sample analysis and functions for importation of the full data set.
+- `station_radius`: plots the position of the stations within walking distance (500 m), and present the basic information about the stations via leaflet\
+
+- `trip_distance`: computes the geographical distance between the start and end stations\ 
+
+
+The package would be a useful tool for the Blue Bike operations to analyze the trip data and help improve the shared bike service based on user data. It is also an easy-to-use tool for data analysis and visualization for anyone interested in the Blue Bike trip data.
 
 ## Installation
 
@@ -43,9 +49,10 @@ You can install the development version of bluebike from [GitHub](https://github
 devtools::install_github("zyang2k/bluebike")
 ```
 
-## Sample Data Set
+## Data Sets Included
 
--   `trip_history_sample`: a sample of 1000 trip data entries from February 2022.
+- `trip_history_sample`: a sample of 1000 trip data entries from February 2022.
+- `station_data`: 
 
 ## Basic Usage
 
