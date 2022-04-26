@@ -86,7 +86,17 @@ BostonMap
 
 What if I want to see the trip data of Jan. 2015?
 ```{r}
-quarter_1_2021 <- import_month_data(2015, 1)
+jan2015 <- import_month_data(2015, 1)
+```
+
+We can then compute the distance between start and end stations for each trip
+```{r}
+jan_distance <- jan2015 %>% 
+  sample_n(1000) %>% 
+  trip_distance()
+mean_jan_distance <- mean(jan_distance$distance)
+mean_jan_distance
+  
 ```
 
 
