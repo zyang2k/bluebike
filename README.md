@@ -1,18 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# bluebike R package
+# bluebike R package <img src='data-raw/hex_bluebike.png' align="right" height="139"/>
 
 <!-- badges: start -->
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-![build: passing](https://img.shields.io/badge/build-passing-green)
 ![version](https://img.shields.io/badge/version-0.0.0.9001-blue)
 [![R-CMD-check](https://github.com/zyang2k/bluebike/workflows/R-CMD-check/badge.svg)](https://github.com/zyang2k/bluebike/actions)
+
 <!-- badges: end -->
 
-# Summary
+## Summary
 
 Our package includes data from the Boston Blue Bike trip history data
 acquired from the [Blue Bikes System
@@ -57,7 +57,8 @@ devtools::install_github("zyang2k/bluebike")
 
 -   `trip_history_sample`: a sample of 1000 trip data entries from
     February 2022.
--   `station_data`:
+-   `station_data`: A dataset that includes identification, position,
+    and other basic information about bluebike stations
 
 ## Basic Usage
 
@@ -73,7 +74,7 @@ stations <- trip_history_sample %>%
   group_by(start_station_name) %>% 
   summarize(trips_from = n())
 head(stations)
-#> # A tibble: 6 x 2
+#> # A tibble: 6 × 2
 #>   start_station_name                        trips_from
 #>   <chr>                                          <int>
 #> 1 175 N Harvard St                                   8
@@ -108,27 +109,14 @@ What if I want to see the trip data of Jan. 2015?
 ``` r
 jan2015 <- import_month_data(2015, 1)
 #> Rows: 7840 Columns: 15
-#> -- Column specification --------------------------------------------------------
+#> ── Column specification ────────────────────────────────────────────────────────
 #> Delimiter: ","
 #> chr  (4): start station name, end station name, usertype, birth year
 #> dbl  (9): tripduration, start station id, start station latitude, start stat...
 #> dttm (2): starttime, stoptime
 #> 
-#> i Use `spec()` to retrieve the full column specification for this data.
-#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-#> Warning in FUN(X[[i]], ...): strings not representable in native encoding will
-#> be translated to UTF-8
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00C4>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00D6>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00E4>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00F6>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00DF>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00C6>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00E6>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00D8>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00F8>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00C5>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00E5>' to native encoding
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 We can then compute the the average distance that user traveled in
@@ -174,8 +162,6 @@ station_500 <- station_radius(-71.13, 42.36, r = 500)
 
 station_500
 ```
-
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 ## Contributors
 

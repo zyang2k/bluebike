@@ -13,17 +13,17 @@ knitr::opts_chunk$set(
 )
 ```
 
-# bluebike R package
+# bluebike R package <img src='data-raw/hex_bluebike.png' align="right" height="139"/>
 
 <!-- badges: start -->
 
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-![build: passing](https://img.shields.io/badge/build-passing-green)
 ![version](https://img.shields.io/badge/version-0.0.0.9001-blue)
 [![R-CMD-check](https://github.com/zyang2k/bluebike/workflows/R-CMD-check/badge.svg)](https://github.com/zyang2k/bluebike/actions)
+
 <!-- badges: end -->
 
-# Summary
+## Summary
 
 Our package includes data from the Boston Blue Bike trip history data acquired from the [Blue Bikes System Data](https://www.bluebikes.com/system-data). The users can import all monthly trip history data from 2020 to 2022 into a cleaned data set that can easily be used for data analysis. \
   
@@ -53,7 +53,7 @@ devtools::install_github("zyang2k/bluebike")
 ## Data Sets Included
 
 - `trip_history_sample`: a sample of 1000 trip data entries from February 2022.
-- `station_data`: 
+- `station_data`: A dataset that includes identification, position, and other basic information about bluebike stations
 
 ## Basic Usage
 
@@ -116,7 +116,7 @@ top_5_station
 I would like to find all stations around me within 500 m, what should I do?
 
 ![closest stations demo](data-raw/closest_stations.png)
-```{r}
+```{r,  eval= FALSE}
 station_500 <- station_radius(-71.13, 42.36, r = 500)
 
 station_500
