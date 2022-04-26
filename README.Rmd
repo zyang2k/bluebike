@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 ![build: passing](https://img.shields.io/badge/build-passing-green)
 ![version](https://img.shields.io/badge/version-0.0.0.9001-blue)
+[![R-CMD-check](https://github.com/zyang2k/bluebike/workflows/R-CMD-check/badge.svg)](https://github.com/zyang2k/bluebike/actions)
 <!-- badges: end -->
 
 # Summary
@@ -87,6 +88,38 @@ BostonMap <- leaflet(data = trip_history_sample) %>%
                    color = "blue")
 
 BostonMap
+```
+
+What if I want to see the trip data of Jan. 2015?
+```{r}
+jan2015 <- import_month_data(2015, 1)
+```
+
+We can then compute the the average distance that user traveled in Jan. 2015
+```{r}
+jan_distance <- jan2015 %>% 
+  sample_n(1000) %>% 
+  trip_distance()
+mean_jan_distance <- mean(jan_distance$distance)
+mean_jan_distance
+```
+
+Where can I find the closest station? 
+
+```{r}
+top_5_station <- station_distance(-71.13, 42.36) %>%
+  head(5)
+
+top_5_station
+```
+
+I would like to find all stations around me within 500 m, what should I do?
+
+![closest stations demo](data-raw/closest_stations.png)
+```{r}
+station_500 <- station_radius(-71.13, 42.36, r = 500)
+
+station_500
 ```
 
 ## Contributors
