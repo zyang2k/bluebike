@@ -4,6 +4,11 @@
 # bluebike R package
 
 <!-- badges: start -->
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+![build: passing](https://img.shields.io/badge/build-passing-green)
+![version](https://img.shields.io/badge/version-0.0.0.9001-blue)
 <!-- badges: end -->
 
 The `bluebike` R package contains data from [Blue Bikes System
