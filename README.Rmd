@@ -38,7 +38,6 @@ The package also includes a sample data set that includes 1000 sampled trip hist
 
 - `trip_distance`: computes the geographical distance between the start and end stations\ 
 
-
 The package would be a useful tool for the Blue Bike operations to analyze the trip data and help improve the shared bike service based on user data. It is also an easy-to-use tool for data analysis and visualization for anyone interested in the Blue Bike trip data.
 
 ## Installation
@@ -57,55 +56,42 @@ devtools::install_github("zyang2k/bluebike")
 
 ## Basic Usage
 
-### Data Wrangling
-
-Count the number of trips from starting stations:
-
-```{r example, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(bluebike)
 library(dplyr)
+```
 
+### Retrieve data online
+
+`import_month_data` enables users to retrieve monthly data from Bluebike System Data website.
+```{r}
+jan2015 <- import_month_data(2015, 1)
+```
+
+### Data Wrangling
+
+- Using the cleaned dataset `trip_history_sample` included in the package, the user can easily find out the most popular station in Feb. 2022:
+
+```{r example, message=FALSE, warning=FALSE}
 stations <- trip_history_sample %>% 
   group_by(start_station_name) %>% 
   summarize(trips_from = n())
 head(stations)
 ```
 
-### Data Visualization via Leaflet
 
-Display the position of the starting stations:
-
-![a visualization demo](data-raw/viz_demo.png)
-
-```{r, message=FALSE, warning=FALSE, eval= FALSE}
-library(leaflet)
-
-BostonMap <- leaflet(data = trip_history_sample) %>% 
-  addTiles() %>% 
-  addCircleMarkers(lng = trip_history_sample$start_station_longitude, 
-                   lat = trip_history_sample$start_station_latitude, 
-                   radius = 0.1, 
-                   color = "blue")
-
-BostonMap
-```
-
-What if I want to see the trip data of Jan. 2015?
-```{r}
-jan2015 <- import_month_data(2015, 1)
-```
-
-We can then compute the the average distance that user traveled in Jan. 2015
+- Via `trip_distance`, the user can compute the the average distance that user traveled in Jan. 2015
 ```{r}
 jan_distance <- jan2015 %>% 
   sample_n(1000) %>% 
   trip_distance()
 mean_jan_distance <- mean(jan_distance$distance)
+
 mean_jan_distance
 ```
 
-Where can I find the closest station? 
 
+- The function `station_distance()` helps the user to find the closest stations nearby. 
 ```{r}
 top_5_station <- station_distance(-71.13, 42.36) %>%
   head(5)
@@ -113,14 +99,35 @@ top_5_station <- station_distance(-71.13, 42.36) %>%
 top_5_station
 ```
 
-I would like to find all stations around me within 500 m, what should I do?
+### Data Visualization via Leaflet
+
+- Incorporated with the interactive map package `leaflet`, the position of the stations can be displayed:
+
+![a visualization demo](data-raw/viz_demo.png)
+
+```{r, message = FALSE, warning = FALSE, eval= FALSE}
+library(leaflet)
+
+BostonMap <- leaflet(data = station_data) %>% 
+  addTiles() %>% 
+  addCircleMarkers(lng = station_data$longitude, 
+                   lat = station_data$latitude, 
+                   radius = 0.1, 
+                   color = "blue")
+
+BostonMap
+```
+
+
+- The function `station_radius()` plots the positions of stations within a certain user defined radius and display basic information about stations available. 
 
 ![closest stations demo](data-raw/closest_stations.png)
-```{r,  eval= FALSE}
+```{r,  eval = FALSE}
 station_500 <- station_radius(-71.13, 42.36, r = 500)
 
 station_500
 ```
+
 
 ## Contributors
 
