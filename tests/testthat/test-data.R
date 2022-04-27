@@ -18,17 +18,17 @@ test_that("station data is a dataframe", {
   expect_type(station_data, "list")
 })
 
-test_that("added distance column is a double vector",{
+test_that("added distance column is a double vector", {
   test_distance <- trip_distance(trip_history_sample)
-  expect_type(test_distance$distance,"double")
+  expect_type(test_distance$distance, "double")
 })
 
-test_that("imported trip history dataset is a dataframe",{
-  import_data <- import_month_data(2020,2)
+test_that("imported trip history dataset is a dataframe", {
+  import_data <- import_month_data(2020, 2)
   expect_type(import_data, "list")
 })
 
-test_that("station distance output dataset is a dataframe",{
+test_that("station distance output dataset is a dataframe", {
   station_df <- station_distance(-71.11467361, 42.34414899)
   expect_type(station_df, "list")
 })
