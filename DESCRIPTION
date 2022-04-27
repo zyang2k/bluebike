@@ -1,12 +1,12 @@
 Package: bluebike
-Title: Blue Bike comprehensive data
-Version: 0.0.0.9001
+Title: Blue Bike Comprehensive Data
+Version: 0.0.1.0
 Authors@R: c(
-    person("Ziyue", "Yang", , "zyang2k@gmail.com", role = c("aut", "cre"),
+    person("Ziyue", "Yang", "zyang2k@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-9299-8327")),
     person("Tianshu", "Zhang", "tzhang26@smith.edu", role = "aut",
            comment = c(ORCID = "0000-0002-3004-4472")))
-Description: This package includes data from the Boston Blue Bike trip history data acquired from the Blue Bikes System Data website. The package compiles all monthly trip history data from 2020 to 2022 into a cleaned data set that can easily be used for data analysis. The package also includes summary functions that generate a user history summary for a given user, trip history for a given station, and overall trip history summary statistics like average duration of trips, average mileage, average speed, and top frequency stations for a given month/year. Functions that facilitate the visualization of trip data with maps. 
+Description: Facilitates the importation of the Boston Blue Bike trip data since 2015. Functions include the computation of trip distances of given trip data. It can also map the location of stations within a given radius and calculate the distance to nearby stations. Data is from <https://www.bluebikes.com/system-data>. 
 License: MIT + file LICENSE
 Suggests: 
     knitr,
