@@ -21,6 +21,16 @@ globalVariables(c(
 #' }
 
 station_radius <- function(long, lat, r = 1000){
+  long <- as.numeric(long)
+  lat <- as.numeric(lat)
+
+  if (long < -180 | long > 180) {
+    stop("please enter a valid longitude between -180 and 180")
+  }
+  if (lat < -90 | lat > 90) {
+    stop("please enter a valid latitude between -90 and 90")
+  }
+
   station_distances <- station_distance(long, lat) %>%
     filter(as.numeric(distance) < r) %>%
     left_join(station_data, by = c("station_ID" = "number"))

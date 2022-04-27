@@ -18,6 +18,17 @@ globalVariables(c(
 #' # Calculate distance for user at (-71.11467361, 42.34414899) and show the closest five stations
 #' top_5_station <- head(station_distance(-71.11467361, 42.34414899),5)
 station_distance <- function(long, lat){
+
+  long <- as.numeric(long)
+  lat <- as.numeric(lat)
+
+  if (long < -180 | long > 180) {
+    stop("please enter a valid longitude between -180 and 180")
+  }
+  if (lat < -90 | lat > 90) {
+    stop("please enter a valid latitude between -90 and 90")
+  }
+
   station_sf <- st_as_sf(station_data, coords = c("longitude", "latitude"),
                                        crs = 4326)
 
