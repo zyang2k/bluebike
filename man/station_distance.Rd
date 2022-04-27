@@ -19,5 +19,5 @@ This function returns stations with distance in ascending order given the user's
 }
 \examples{
 # Calculate distance for user at (-71.11467361, 42.34414899) and show the closest five stations
-top_5_station <- head(station_distance(-71.11467361, 42.34414899),5)
+top_5_station <- head(station_distance(-71.11467361, 42.34414899), 5)
 }

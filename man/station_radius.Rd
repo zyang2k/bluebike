@@ -24,4 +24,5 @@ This function plots the position of the stations within walking distance
 # Show user at (-71.11467, 42.34415) and set the radius to 500 m
 station_radius(long = -71.11467, lat = 42.34415, r = 2000)
 }
+
 }

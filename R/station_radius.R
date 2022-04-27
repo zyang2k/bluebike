@@ -19,8 +19,8 @@ globalVariables(c(
 #' # Show user at (-71.11467, 42.34415) and set the radius to 500 m
 #' station_radius(long = -71.11467, lat = 42.34415, r = 2000)
 #' }
-
-station_radius <- function(long, lat, r = 1000){
+#'
+station_radius <- function(long, lat, r = 1000) {
   long <- as.numeric(long)
   lat <- as.numeric(lat)
 
@@ -42,11 +42,15 @@ station_radius <- function(long, lat, r = 1000){
   station_map <- leaflet(data = station_distances) %>%
     addTiles() %>%
     addMarkers(station_distances$longitude, station_distances$latitude,
-              popup = paste0("Station: ", station_distances$name, "<br>",
-                             "# docks: ", station_distances$total_docks),
-              options = popupOptions(closeButton = TRUE)) %>%
+      popup = paste0(
+        "Station: ", station_distances$name, "<br>",
+        "# docks: ", station_distances$total_docks
+      ),
+      options = popupOptions(closeButton = TRUE)
+    ) %>%
     addCircles(long, lat,
-               radius = r) %>%
+      radius = r
+    ) %>%
     addAwesomeMarkers(long, lat, icon = user_position_icon, label = "you are here!")
 
   return(station_map)
