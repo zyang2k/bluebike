@@ -32,7 +32,7 @@ knitr::opts_chunk$set(
 ```{r setup, message = FALSE}
 # needed packages in vignette
 library(bluebike)
-library(tidyverse)
+library(dplyr)
 library(leaflet)
 ```
 
