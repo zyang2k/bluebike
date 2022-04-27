@@ -2,9 +2,9 @@ Package: bluebike
 Title: Blue Bike Comprehensive Data
 Version: 0.0.1.0
 Authors@R: c(
-    person("Ziyue", "Yang", "zyang2k@gmail.com", role = c("aut", "cre"),
+    person(given = "Ziyue", family = "Yang", email = "zyang2k@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-9299-8327")),
-    person("Tianshu", "Zhang", "tzhang26@smith.edu", role = "aut",
+    person(given = "Tianshu", family = "Zhang", email = "tzhang26@smith.edu", role = c("aut"),
            comment = c(ORCID = "0000-0002-3004-4472")))
 Description: Facilitates the importation of the Boston Blue Bike trip data since 2015. Functions include the computation of trip distances of given trip data. It can also map the location of stations within a given radius and calculate the distance to nearby stations. Data is from <https://www.bluebikes.com/system-data>. 
 License: MIT + file LICENSE
