@@ -7,7 +7,7 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-![version](https://img.shields.io/badge/version-0.0.0.9001-blue)
+![version](https://img.shields.io/badge/version-0.0.1-blue)
 [![R-CMD-check](https://github.com/zyang2k/bluebike/workflows/R-CMD-check/badge.svg)](https://github.com/zyang2k/bluebike/actions)
 
 <!-- badges: end -->
@@ -75,27 +75,14 @@ System Data website.
 ``` r
 jan2015 <- import_month_data(2015, 1)
 #> Rows: 7840 Columns: 15
-#> -- Column specification --------------------------------------------------------
+#> ── Column specification ────────────────────────────────────────────────────────
 #> Delimiter: ","
 #> chr  (4): start station name, end station name, usertype, birth year
 #> dbl  (9): tripduration, start station id, start station latitude, start stat...
 #> dttm (2): starttime, stoptime
 #> 
-#> i Use `spec()` to retrieve the full column specification for this data.
-#> i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-#> Warning in FUN(X[[i]], ...): strings not representable in native encoding will
-#> be translated to UTF-8
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00C4>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00D6>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00E4>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00F6>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00DF>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00C6>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00E6>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00D8>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00F8>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00C5>' to native encoding
-#> Warning in FUN(X[[i]], ...): unable to translate '<U+00E5>' to native encoding
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 ### Data Wrangling
@@ -109,7 +96,7 @@ stations <- trip_history_sample %>%
   group_by(start_station_name) %>% 
   summarize(trips_from = n())
 head(stations)
-#> # A tibble: 6 x 2
+#> # A tibble: 6 × 2
 #>   start_station_name                        trips_from
 #>   <chr>                                          <int>
 #> 1 175 N Harvard St                                   8
