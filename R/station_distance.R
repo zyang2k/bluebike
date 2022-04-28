@@ -16,9 +16,8 @@ globalVariables(c(
 #' @export station_distance
 #' @examples
 #' # Calculate distance for user at (-71.11467361, 42.34414899) and show the closest five stations
-#' top_5_station <- head(station_distance(-71.11467361, 42.34414899),5)
-station_distance <- function(long, lat){
-
+#' top_5_station <- head(station_distance(-71.11467361, 42.34414899), 5)
+station_distance <- function(long, lat) {
   long <- as.numeric(long)
   lat <- as.numeric(lat)
 
@@ -29,24 +28,26 @@ station_distance <- function(long, lat){
     stop("please enter a valid latitude between -90 and 90")
   }
 
-  station_sf <- st_as_sf(station_data, coords = c("longitude", "latitude"),
-                                       crs = 4326)
+  station_sf <- st_as_sf(station_data,
+    coords = c("longitude", "latitude"),
+    crs = 4326
+  )
 
   user_sf <- c("longitude" = long, "latitude" = lat) %>%
-    `t` %>%
+    `t`() %>%
     as.data.frame() %>%
     st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
 
   temp <- st_distance(x = station_sf, y = user_sf) %>%
     as.data.frame() %>%
-    mutate(station_ID= station_data$number,
-           station_name = station_data$name,
-           station_position = station_sf$geometry,
-           docks = station_data$total_docks) %>%
-    rename(distance = '.')
+    mutate(
+      station_ID = station_data$number,
+      station_name = station_data$name,
+      station_position = station_sf$geometry,
+      docks = station_data$total_docks
+    ) %>%
+    rename(distance = ".")
 
-  ordered_station <- temp[order(temp$distance),]
+  ordered_station <- temp[order(temp$distance), ]
   return(ordered_station)
 }
-
-

@@ -28,73 +28,81 @@ globalVariables(c(
 #' quarter_1_2015 <- lapply(spring2015, import_month_data, year = 2015)
 #' quarter_1_2015 <- bind_rows(quarter_1_2015)
 #' }
-import_month_data <- function(year, month){
+import_month_data <- function(year, month) {
   year <- as.character(year)
   if (month < 10) {
-    month = str_c("0", as.character(month))}
-  else {month = as.character(month)}
+    month <- str_c("0", as.character(month))
+  } else {
+    month <- as.character(month)
+  }
 
-  if (! year %in% c("2015","2016","2017","2018","2019","2020","2021")) {
+  if (!year %in% c("2015", "2016", "2017", "2018", "2019", "2020", "2021")) {
     stop("please enter year between 2015 - 2021")
   }
-  if (! month %in% c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")) {
+  if (!month %in% c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")) {
     stop("please enter month between 1 - 12")
   }
 
   ym <- str_c(year, month) # create a 6 digit chr vector for reference
 
-  if(as.numeric(year) == 2018){
-    if(as.numeric(month) > 4){
+  if (as.numeric(year) == 2018) {
+    if (as.numeric(month) > 4) {
       download.file(
         url = str_c("https://s3.amazonaws.com/hubway-data/", ym, "-bluebikes-tripdata.zip"),
-        destfile = str_c(tempdir(),"/", ym, "-hubway-tripdata.zip")
+        destfile = str_c(tempdir(), "/", ym, "-hubway-tripdata.zip")
       )
       unzip(str_c(tempdir(), "/", ym, "-hubway-tripdata.zip"), exdir = tempdir())
-      this_month_bike <- read_csv(str_c(tempdir(),"/", ym, "-bluebikes-tripdata.csv")) %>%
+      this_month_bike <- read_csv(str_c(tempdir(), "/", ym, "-bluebikes-tripdata.csv")) %>%
         mutate(
           usertype = as.factor(usertype),
           start_time = lubridate::ymd_hms(starttime),
-          stop_time = lubridate::ymd_hms(stoptime)) %>%
+          stop_time = lubridate::ymd_hms(stoptime)
+        ) %>%
         select(-c(starttime, stoptime)) %>%
-        rename(trip_duration = tripduration,
-               bike_id = bikeid,
-               user_type = usertype) %>%
+        rename(
+          trip_duration = tripduration,
+          bike_id = bikeid,
+          user_type = usertype
+        ) %>%
         janitor::clean_names()
-     }
-  }
-  else if(as.numeric(year) > 2018){
+    }
+  } else if (as.numeric(year) > 2018) {
     download.file(
       url = str_c("https://s3.amazonaws.com/hubway-data/", ym, "-bluebikes-tripdata.zip"),
-      destfile = str_c(tempdir(),"/", ym, "-hubway-tripdata.zip")
+      destfile = str_c(tempdir(), "/", ym, "-hubway-tripdata.zip")
     )
     unzip(str_c(tempdir(), "/", ym, "-hubway-tripdata.zip"), exdir = tempdir())
-    this_month_bike <- read_csv(str_c(tempdir(),"/", ym, "-bluebikes-tripdata.csv")) %>%
+    this_month_bike <- read_csv(str_c(tempdir(), "/", ym, "-bluebikes-tripdata.csv")) %>%
       mutate(
         usertype = as.factor(usertype),
         start_time = lubridate::ymd_hms(starttime),
-        stop_time = lubridate::ymd_hms(stoptime)) %>%
+        stop_time = lubridate::ymd_hms(stoptime)
+      ) %>%
       select(-c(starttime, stoptime)) %>%
-      rename(trip_duration = tripduration,
-             bike_id = bikeid,
-             user_type = usertype) %>%
+      rename(
+        trip_duration = tripduration,
+        bike_id = bikeid,
+        user_type = usertype
+      ) %>%
       janitor::clean_names()
-  }
-  else{
+  } else {
     download.file(
-    url = str_c("https://s3.amazonaws.com/hubway-data/", ym, "-hubway-tripdata.zip"),
-    destfile = str_c(tempdir(),"/", ym, "-hubway-tripdata.zip")
+      url = str_c("https://s3.amazonaws.com/hubway-data/", ym, "-hubway-tripdata.zip"),
+      destfile = str_c(tempdir(), "/", ym, "-hubway-tripdata.zip")
     )
     unzip(str_c(tempdir(), "/", ym, "-hubway-tripdata.zip"), exdir = tempdir())
-    this_month_bike <- read_csv(str_c(tempdir(),"/", ym, "-hubway-tripdata.csv")) %>%
+    this_month_bike <- read_csv(str_c(tempdir(), "/", ym, "-hubway-tripdata.csv")) %>%
       mutate(
         usertype = as.factor(usertype),
         start_time = lubridate::ymd_hms(starttime),
-        stop_time = lubridate::ymd_hms(stoptime)) %>%
+        stop_time = lubridate::ymd_hms(stoptime)
+      ) %>%
       select(-c(starttime, stoptime)) %>%
-      rename(trip_duration = tripduration,
-             bike_id = bikeid,
-             user_type = usertype) %>%
+      rename(
+        trip_duration = tripduration,
+        bike_id = bikeid,
+        user_type = usertype
+      ) %>%
       janitor::clean_names()
   }
-
 }

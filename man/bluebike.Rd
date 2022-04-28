@@ -3,7 +3,7 @@
 \docType{package}
 \name{bluebike}
 \alias{bluebike}
-\title{bluebike - A Data Package for Bluebike users}
+\title{bluebike - A Data Package for Bluebike Users}
 \description{
 \code{bluebike} includes functions and dataset that aids bluebike users to retrieve data and perform data wrangling and visualizations
 }
@@ -30,8 +30,8 @@ Available datasets are: \cr
 \dontrun{
 # Find most used stations:
 stations <- trip_history_sample \%>\%
-    group_by(`start_station_name`) \%>\%
-    summarize(trips_from = n())
+  group_by(`start_station_name`) \%>\%
+  summarize(trips_from = n())
 head(stations)
 }
 }

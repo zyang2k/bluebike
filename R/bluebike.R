@@ -1,4 +1,4 @@
-#' bluebike - A Data Package for Bluebike users
+#' bluebike - A Data Package for Bluebike Users
 #'
 #' @docType package
 #' @name bluebike
@@ -29,8 +29,8 @@
 #' \dontrun{
 #' # Find most used stations:
 #' stations <- trip_history_sample %>%
-#'     group_by(`start_station_name`) %>%
-#'     summarize(trips_from = n())
+#'   group_by(`start_station_name`) %>%
+#'   summarize(trips_from = n())
 #' head(stations)
 #' }
 NULL

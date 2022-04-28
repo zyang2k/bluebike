@@ -1,33 +1,39 @@
 Package: bluebike
 Title: Blue Bike Comprehensive Data
-Version: 0.0.1.0
+Version: 0.0.1
 Authors@R: c(
-    person(given = "Ziyue", family = "Yang", email = "zyang2k@gmail.com", role = c("aut", "cre"),
+    person("Ziyue", "Yang", , "zyang2k@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-9299-8327")),
-    person(given = "Tianshu", family = "Zhang", email = "tzhang26@smith.edu", role = c("aut"),
-           comment = c(ORCID = "0000-0002-3004-4472")))
-Description: Facilitates the importation of the Boston Blue Bike trip data since 2015. Functions include the computation of trip distances of given trip data. It can also map the location of stations within a given radius and calculate the distance to nearby stations. Data is from <https://www.bluebikes.com/system-data>. 
+    person("Tianshu", "Zhang", , "tzhang26@smith.edu", role = "aut",
+           comment = c(ORCID = "0000-0002-3004-4472"))
+  )
+Description: Facilitates the importation of the Boston Blue Bike trip data
+    since 2015. Functions include the computation of trip distances of
+    given trip data. It can also map the location of stations within a
+    given radius and calculate the distance to nearby stations. Data is
+    from <https://www.bluebikes.com/system-data>.
 License: MIT + file LICENSE
+Depends: 
+    R (>= 2.10)
+Imports: 
+    dplyr,
+    janitor,
+    leaflet,
+    lubridate,
+    magrittr,
+    readr,
+    sf,
+    stringr,
+    tidyselect,
+    utils
 Suggests: 
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-Imports: 
-    readr,
-    stringr,
-    dplyr,
-    utils,
-    magrittr,
-    janitor,
-    lubridate,
-    tidyselect,
-    sf,
-    leaflet
-RoxygenNote: 7.1.2
-Depends: 
-    R (>= 2.10)
 LazyData: true
-VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
