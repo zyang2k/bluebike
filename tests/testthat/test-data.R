@@ -32,3 +32,8 @@ test_that("station distance output dataset is a dataframe", {
   station_df <- station_distance(-71.11467361, 42.34414899)
   expect_type(station_df, "list")
 })
+
+test_that("station radius function outputs a leaflet map", {
+  radius_map <- station_radius(long = -71.11467, lat = 42.34415, r = 2000)
+  expect_equal(class(radius_map), c("leaflet", "htmlwidget"))
+})
