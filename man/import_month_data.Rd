@@ -18,8 +18,9 @@ A spec_tbl_df object
 This function takes in numeric year/month values and imports data for the specified time
 }
 \examples{
-\dontrun{
+\donttest{
 # Pull Jan., 2015 data from web
+library(dplyr)
 jan_2015 <- import_month_data(2015, 1)
 
 # Pull first quarter of 2015 data from web

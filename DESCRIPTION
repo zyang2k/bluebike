@@ -1,6 +1,6 @@
 Package: bluebike
 Title: Blue Bike Comprehensive Data
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: c(
     person("Ziyue", "Yang", , "zyang2k@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-9299-8327")),

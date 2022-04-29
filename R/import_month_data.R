@@ -21,6 +21,7 @@ globalVariables(c(
 #' @examples
 #' \donttest{
 #' # Pull Jan., 2015 data from web
+#' library(dplyr)
 #' jan_2015 <- import_month_data(2015, 1)
 #'
 #' # Pull first quarter of 2015 data from web
