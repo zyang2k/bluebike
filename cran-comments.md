@@ -11,13 +11,7 @@ This is a resubmission of bluebike v0.0.1 that fixes:
 
 ## R CMD check results
 
-❯ checking CRAN incoming feasibility ... NOTE
-  Maintainer: 'Ziyue Yang <zyang2k@gmail.com>'
-  
-  New submission
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: ‘Ziyue Yang <zyang2k@gmail.com>’
 
-❯ checking for detritus in the temp directory ... NOTE
-  Found the following files/directories:
-    'lastMiKTeXException'
-
-0 errors ✔ | 0 warnings ✔ | 2 notes ✖
+New submission
