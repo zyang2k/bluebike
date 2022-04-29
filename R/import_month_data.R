@@ -19,7 +19,7 @@ globalVariables(c(
 #' @param month numeric value of month
 #' @export import_month_data
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Pull Jan., 2015 data from web
 #' jan_2015 <- import_month_data(2015, 1)
 #'
