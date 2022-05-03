@@ -16,8 +16,6 @@ a tbl_df object with an additional distance column
 This function computes the geographical distance between the start and end stations for trips in a given dataset
 }
 \examples{
-\dontrun{
 # Calculate distance for sample trip data
 sample_distance <- trip_distance(trip_history_sample)$distance
-}
 }

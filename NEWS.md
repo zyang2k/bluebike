@@ -1,3 +1,7 @@
+# bluebike 0.0.3
+
+* removed \dontrun from examples.
+
 # bluebike 0.0.2
 
 * put functions which download data in \donttest{}.

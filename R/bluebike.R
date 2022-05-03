@@ -32,5 +32,4 @@
 #'   group_by(`start_station_name`) %>%
 #'   summarize(trips_from = n())
 #' head(stations)
-#' }
 NULL

@@ -16,7 +16,6 @@ globalVariables(c(
 #' @examples
 #' # Calculate distance for sample trip data
 #' sample_distance <- trip_distance(trip_history_sample)$distance
-#' }
 trip_distance <- function(data) {
   if (length(intersect(class(data), c("tbl_df", "tbl", "data.frame"))) == 0) {
     stop("Input should be a tbl_df, tbl, or data.frame object.")
