@@ -15,7 +15,6 @@ globalVariables(c(
 #' @param r numeric value of set radius in meters
 #' @export station_radius
 #' @examples
-#' \dontrun{
 #' # Show user at (-71.11467, 42.34415) and set the radius to 500 m
 #' station_radius(long = -71.11467, lat = 42.34415, r = 2000)
 #' }

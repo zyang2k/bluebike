@@ -14,7 +14,6 @@ globalVariables(c(
 #' @param data trip data pulled from the Blue Bike System data
 #' @export trip_distance
 #' @examples
-#' \dontrun{
 #' # Calculate distance for sample trip data
 #' sample_distance <- trip_distance(trip_history_sample)$distance
 #' }
