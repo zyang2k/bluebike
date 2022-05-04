@@ -1,6 +1,8 @@
 ## Resubmission
 
-This is a resubmission of bluebike v0.0.1 that fixes:
+This is a resubmission of bluebike v0.0.2 that fixes:
+  please unwrap the examples if they are executable in < 5 sec, or replace 
+\dontrun{} with \donttest{}.
 
 ## Test environments
 - local macOS install, R 4.1.3
