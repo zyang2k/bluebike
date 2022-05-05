@@ -25,15 +25,9 @@ output:
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.width = 5
 )
-```
-
-```{r setup, message = FALSE}
-# needed packages in vignette
-library(bluebike)
-library(dplyr)
-library(leaflet)
 ```
 
 ## Summary
@@ -43,13 +37,13 @@ Our package includes data from the Boston Blue Bike trip history data acquired f
 The package also includes a sample data set that includes 1000 sampled trip history from Feb. 2022, and a full data set that contains information about all available stations. 
   Functions inside the package:\
   
-- `import_month_data`: takes in numeric year/month values and imports data for the specified time\
+- `import_month_data()`: takes in numeric year/month values and imports data for the specified time\
 
-- `station_distance`: returns stations with distance in ascending order given the user's current location\
+- `station_distance()`: returns stations with distance in ascending order given the user's current location\
 
-- `station_radius`: plots the position of the stations within walking distance (500 m), and present the basic information about the stations via leaflet\
+- `station_radius()`: plots the position of the stations within walking distance (500 m), and present the basic information about the stations via leaflet\
 
-- `trip_distance`: computes the geographical distance between the start and end stations\ 
+- `trip_distance()`: computes the geographical distance between the start and end stations\ 
 
 
 The package would be a useful tool for the Blue Bike operations to analyze the trip data and help improve the shared bike service based on user data. It is also an easy-to-use tool for data analysis and visualization for anyone interested in the Blue Bike trip data.
@@ -77,8 +71,8 @@ jan2015 <- import_month_data(2015, 1)
 - Using the cleaned dataset `trip_history_sample` included in the package, the user can easily find out the most popular station in Feb. 2022:
 
 ```{r example, message=FALSE, warning=FALSE}
-stations <- trip_history_sample %>% 
-  group_by(start_station_name) %>% 
+stations <- trip_history_sample %>%
+  group_by(start_station_name) %>%
   summarize(trips_from = n())
 head(stations)
 ```
@@ -86,8 +80,8 @@ head(stations)
 
 - Via `trip_distance`, the user can compute the the average distance that user traveled in Jan. 2015
 ```{r}
-jan_distance <- jan2015 %>% 
-  sample_n(1000) %>% 
+jan_distance <- jan2015 %>%
+  sample_n(1000) %>%
   trip_distance()
 mean_jan_distance <- mean(jan_distance$distance)
 
@@ -111,24 +105,21 @@ top_5_station
 
 ```{r}
 library(leaflet)
-
-BostonMap <- leaflet(data = station_data) %>% 
-  addTiles() %>% 
-  addCircleMarkers(lng = station_data$longitude, 
-                   lat = station_data$latitude, 
-                   radius = 0.1, 
-                   color = "blue")
-
-BostonMap
+leaflet(data = station_data) %>%
+  addTiles() %>%
+  addCircleMarkers(
+    lng = station_data$longitude,
+    lat = station_data$latitude,
+    radius = 0.1,
+    color = "blue"
+  )
 ```
 
 
 - The function `station_radius()` plots the positions of stations within a certain user defined radius and display basic information about stations available. 
 
 ```{r}
-station_500 <- station_radius(-71.13, 42.36, r = 500)
-
-station_500
+station_radius(-71.13, 42.36, r = 500)
 ```
 
 
