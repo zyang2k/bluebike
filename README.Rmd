@@ -41,8 +41,13 @@ The package also includes a sample data set that includes 1000 sampled trip hist
 The package would be a useful tool for the Blue Bike operations to analyze the trip data and help improve the shared bike service based on user data. It is also an easy-to-use tool for data analysis and visualization for anyone interested in the Blue Bike trip data.
 
 ## Installation
+Get the latest released version from CRAN:
 
-You can install the development version of bluebike from [GitHub](https://github.com/zyang2k/bluebike) with:
+``` r
+install.packages("bluebike")
+```
+
+You can also install the development version of bluebike from [GitHub](https://github.com/zyang2k/bluebike) with:
 
 ``` r
 # install.packages("devtools")

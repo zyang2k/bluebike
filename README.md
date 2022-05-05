@@ -46,7 +46,13 @@ visualization for anyone interested in the Blue Bike trip data.
 
 ## Installation
 
-You can install the development version of bluebike from
+Get the latest released version from CRAN:
+
+``` r
+install.packages("bluebike")
+```
+
+You can also install the development version of bluebike from
 [GitHub](https://github.com/zyang2k/bluebike) with:
 
 ``` r
