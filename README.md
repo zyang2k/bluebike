@@ -60,6 +60,12 @@ You can also install the development version of bluebike from
 devtools::install_github("zyang2k/bluebike")
 ```
 
+You can load this package by
+
+``` r
+library(bluebike)
+```
+
 ## Data Sets Included
 
 -   `trip_history_sample`: a sample of 1000 trip data entries from

@@ -53,6 +53,10 @@ You can also install the development version of bluebike from [GitHub](https://g
 # install.packages("devtools")
 devtools::install_github("zyang2k/bluebike")
 ```
+You can load this package by
+``` r
+library(bluebike)
+```
 
 ## Data Sets Included
 
