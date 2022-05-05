@@ -7,7 +7,8 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-![version](https://img.shields.io/badge/version-0.0.1-blue)
+[![CRAN
+status](https://r-pkg.org/badges/version/bluebike)](https://CRAN.R-project.org/package=bluebikel)
 [![R-CMD-check](https://github.com/zyang2k/bluebike/workflows/R-CMD-check/badge.svg)](https://github.com/zyang2k/bluebike/actions)
 
 <!-- badges: end -->
